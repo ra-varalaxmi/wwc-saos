@@ -20,15 +20,11 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 
 	private java.text.DateFormat timeFormat;
 	private java.text.DateFormat dateFormat;
-	private SimpleDateFormat dateWeekFormat;
-
-	private static final long LIMIT_1_WEEK = 7 * 24 * 60 * 60 * 1000;
 
 	public RecentActivityAdapter(Context context, List<ActivityInfo> dataset) {
 		this.activityInfos = dataset;
 
 		timeFormat = DateFormat.getTimeFormat(context);
-		dateWeekFormat = new SimpleDateFormat("EEE");
 		dateFormat = DateFormat.getDateFormat(context);
 	}
 
@@ -78,8 +74,6 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 
 		if (old.getTime() >= midnight) {
 			timestampLabel = timeFormat.format(old);
-		} else if (gap <= LIMIT_1_WEEK) {
-			timestampLabel = dateWeekFormat.format(old);
 		} else {
 			timestampLabel = dateFormat.format(old);
 		}
