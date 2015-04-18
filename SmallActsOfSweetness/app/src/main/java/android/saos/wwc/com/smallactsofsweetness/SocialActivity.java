@@ -268,10 +268,10 @@ public class SocialActivity extends FragmentActivity {
     private void postStatusUpdate() {
         Profile profile = Profile.getCurrentProfile();
         ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                .setContentTitle("Hello Facebook")
+                .setContentTitle("Small Acts of Sweetness")
                 .setContentDescription(
-                        "The 'Hello Facebook' sample  showcases simple Facebook integration")
-                .setContentUrl(Uri.parse("http://developers.facebook.com/docs/android"))
+                        "Share your act of sweetness with your friends and family")
+                //.setContentUrl(Uri.parse("http://developers.facebook.com/docs/android"))
                 .build();
         if (canPresentShareDialog) {
             shareDialog.show(linkContent);
