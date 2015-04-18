@@ -42,9 +42,10 @@ public class HomeActivity extends ActionBarActivity implements View.OnClickListe
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.home_map_button:
-				//TODO: Navigate to MapActivity
-				break;
+            case R.id.home_map_button:
+                Intent mapIntent = new Intent(this, MapsActivity.class);
+                startActivity(mapIntent);
+                break;
 			case R.id.home_status_button:
 				Intent statusIntent = new Intent(this, StatusActivity.class);
 				startActivity(statusIntent);

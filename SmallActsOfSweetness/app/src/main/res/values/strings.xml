@@ -23,5 +23,6 @@
     <string name="permission_not_granted">Unable to perform selected action because permissions were not granted.</string>
     <string name="ok">OK</string>
     <string name="recent_activity_label">Recent activity</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
