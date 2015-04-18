@@ -40,7 +40,7 @@
 
             />
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
@@ -60,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
+                android:visibility="gone"
                 facebook:preset_size="normal"/>
             <Button
                 android:id="@+id/postStatusUpdateButton"
@@ -74,6 +75,22 @@
                 android:text="Post Photo"
                 android:visibility="gone"
                 />
+            <TextView
+                android:id="@+id/social_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/social_activity_label"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/social_activity_list"
+                android:layout_below="@id/social_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:isScrollContainer="false"
+                android:scrollbars="vertical"/>
 
         </LinearLayout>
     </LinearLayout>

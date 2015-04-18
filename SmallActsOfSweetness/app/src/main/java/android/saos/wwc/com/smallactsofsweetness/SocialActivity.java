@@ -8,6 +8,8 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,9 +33,25 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class SocialActivity extends FragmentActivity {
 
+    RecyclerView recentActivityView;
+    RecentActivityAdapter adapter;
+
+    private static final long HOUR_IN_MILLIS = 60 * 60 * 1000;
+    private static final long DAY_IN_MILLIS = 24 * HOUR_IN_MILLIS;
+
+    private List<ActivityInfo> getDummyActivity() {
+        long now = System.currentTimeMillis();
+        List<ActivityInfo> activity = new ArrayList<ActivityInfo>();
+        activity.add(new ActivityInfo(ActivityInfo.Type.MILESTONE, "Congratulate Anna!", "Anna donated 10 cupcakes this month", now));
+        activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Kine shared a sweet", "Kine shared a cake at Paris Baguette", now - HOUR_IN_MILLIS*2));
+        activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Aronima shared an ice cream", "Lorem ipsum", now - DAY_IN_MILLIS));
+        activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Nicole shared a cake", "Lorem ipsum", now - DAY_IN_MILLIS));
+        return activity;
+    }
     private static final String PERMISSION = "publish_actions";
     private static final Location SEATTLE_LOCATION = new Location("") {
         {
@@ -98,6 +116,7 @@ public class SocialActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         callbackManager = CallbackManager.Factory.create();
@@ -184,6 +203,13 @@ public class SocialActivity extends FragmentActivity {
         // Can we present the share dialog for photos?
         canPresentShareDialogWithPhotos = ShareDialog.canShow(
                 SharePhotoContent.class);
+
+        recentActivityView = (RecyclerView) findViewById(R.id.social_activity_list);
+        recentActivityView.setHasFixedSize(true);
+        recentActivityView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter = new RecentActivityAdapter(this, getDummyActivity());
+        recentActivityView.setAdapter(adapter);
     }
 
     @Override
