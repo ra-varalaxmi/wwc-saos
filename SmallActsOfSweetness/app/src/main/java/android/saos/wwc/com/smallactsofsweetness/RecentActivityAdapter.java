@@ -41,8 +41,14 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 		int iconResId;
 		switch (info.getType()) {
 			case DONATION:
+				iconResId = R.drawable.payment7;
+				break;
 			case REDEEM:
+				iconResId = R.drawable.gift2;
+				break;
 			case MILESTONE:
+				iconResId = R.drawable.first31;
+				break;
 			default:
 				iconResId = R.mipmap.ic_launcher;
 				break;
@@ -51,6 +57,13 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 		viewHolder.titleView.setText(info.getTitle());
 		viewHolder.messageView.setText(info.getMessage());
 		viewHolder.dateView.setText(formatTimeStamp(info.getTimestamp()));
+
+		viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
 	}
 
 	@Override

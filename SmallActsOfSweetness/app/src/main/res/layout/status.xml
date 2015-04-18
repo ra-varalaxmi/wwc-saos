@@ -1,28 +1,39 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-                tools:context="android.saos.wwc.com.smallactsofsweetness.StatusActivity">
-
-    <TextView
-        android:id="@+id/recent_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recent_activity_label"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/activity_list"
-        android:layout_below="@id/recent_label"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:isScrollContainer="false"
-        android:scrollbars="vertical"/>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:background="@drawable/status_bg"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    tools:context="android.saos.wwc.com.smallactsofsweetness.StatusActivity">
+
+        <TextView
+            android:id="@+id/recent_label"
+            style="@style/StatusRecentLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recent_activity_label"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recent_label"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:isScrollContainer="false"
+            android:scrollbars="vertical"/>
+    </RelativeLayout>
+</FrameLayout>

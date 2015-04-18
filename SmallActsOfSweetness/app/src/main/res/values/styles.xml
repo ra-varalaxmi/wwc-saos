@@ -12,4 +12,21 @@
         <item name="android:onClick">onClick</item>
         <item name="android:layout_marginBottom">@dimen/home_button_margin</item>
     </style>
+
+    <style name="StatusRecentLabel">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="StatusRecentTitle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="StatusRecentMessage">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="StatusRecentDate">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>
