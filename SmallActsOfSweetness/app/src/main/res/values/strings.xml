@@ -24,5 +24,6 @@
     <string name="ok">OK</string>
     <string name="recent_activity_label">Recent activity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="social_activity_label">Friends activity</string>
 
 </resources>
