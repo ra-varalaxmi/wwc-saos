@@ -1,12 +1,14 @@
 package android.saos.wwc.com.smallactsofsweetness;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class HomeActivity extends ActionBarActivity {
+public class HomeActivity extends ActionBarActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,4 +38,23 @@ public class HomeActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.home_map_button:
+				//TODO: Navigate to MapActivity
+				break;
+			case R.id.home_status_button:
+				Intent statusIntent = new Intent(this, StatusActivity.class);
+				startActivity(statusIntent);
+				break;
+			case R.id.home_social_button:
+				Intent socialIntent = new Intent(this, SocialActivity.class);
+				startActivity(socialIntent);
+				break;
+			default:
+				break;
+		}
+	}
 }
