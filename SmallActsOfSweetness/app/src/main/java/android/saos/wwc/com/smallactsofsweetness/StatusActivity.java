@@ -26,14 +26,14 @@ public class StatusActivity extends ActionBarActivity {
 	private List<ActivityInfo> getDummyActivity() {
 		long now = System.currentTimeMillis();
 		List<ActivityInfo> activity = new ArrayList<ActivityInfo>();
-		activity.add(new ActivityInfo(ActivityInfo.Type.MILESTONE, "Congratulations!", "Lorem ipsum", now));
-		activity.add(new ActivityInfo(ActivityInfo.Type.REDEEM, "Thank you!", "Your gift to has been redeemed", now - HOUR_IN_MILLIS));
-		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Lorem ipsum", "Lorem ipsum", now - HOUR_IN_MILLIS*2));
-		activity.add(new ActivityInfo(ActivityInfo.Type.REDEEM, "Thank you!", "Your gift to has been redeemed", now - HOUR_IN_MILLIS*3));
-		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Lorem ipsum", "Lorem ipsum", now - DAY_IN_MILLIS));
-		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Lorem ipsum", "Lorem ipsum", now - DAY_IN_MILLIS));
+		activity.add(new ActivityInfo(ActivityInfo.Type.MILESTONE, "Congratulations!", "You've earned the Caring Heart Badge", now));
+		activity.add(new ActivityInfo(ActivityInfo.Type.REDEEM, "Thank you!", "You've fed a grateful stomach at Bob's Burgers", now - HOUR_IN_MILLIS));
+		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "You're awesome!", "Those $10 at Connie's Cafe will go a long way", now - HOUR_IN_MILLIS*2));
+		activity.add(new ActivityInfo(ActivityInfo.Type.REDEEM, "Thank you!", "Your gift at The Coffee Hut has been redeemed", now - HOUR_IN_MILLIS*3));
+		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Thank you!", "You've donated 2 pies at Aunt Bertha's Bakery", now - DAY_IN_MILLIS));
+		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "You're so sweet", "Thanks for the cup of coffee at Joe's", now - DAY_IN_MILLIS));
 		activity.add(new ActivityInfo(ActivityInfo.Type.REDEEM, "Thank you!", "Your gift to has been redeemed", now - DAY_IN_MILLIS*3));
-		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Some bakery", "Lorem ipsum", now - DAY_IN_MILLIS*4));
+		activity.add(new ActivityInfo(ActivityInfo.Type.DONATION, "Thanks!", "That's two more souls you've fed", now - DAY_IN_MILLIS*4));
 		return activity;
 	}
 

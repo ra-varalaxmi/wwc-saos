@@ -1,6 +1,10 @@
 package android.saos.wwc.com.smallactsofsweetness;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -9,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -21,11 +24,15 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 	private java.text.DateFormat timeFormat;
 	private java.text.DateFormat dateFormat;
 
+	private Context context;
+
 	public RecentActivityAdapter(Context context, List<ActivityInfo> dataset) {
 		this.activityInfos = dataset;
 
 		timeFormat = DateFormat.getTimeFormat(context);
 		dateFormat = DateFormat.getDateFormat(context);
+
+		this.context = context;
 	}
 
 	@Override
@@ -38,6 +45,37 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 	public void onBindViewHolder(RecentActivityAdapter.ViewHolder viewHolder, int position) {
 		ActivityInfo info = activityInfos.get(position);
 
+		viewHolder.iconView.setImageResource(getIconByActivityType(info));
+		viewHolder.titleView.setText(info.getTitle());
+		viewHolder.messageView.setText(info.getMessage());
+		viewHolder.dateView.setText(formatTimeStamp(info.getTimestamp()));
+
+		viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ActivityInfo info = new ActivityInfo(ActivityInfo.Type.MILESTONE, "Congratulations!", "You've earned the Caring Heart Badge", System.currentTimeMillis());
+				NotificationCompat.Builder builder =
+						new NotificationCompat.Builder(context)
+								.setSmallIcon(R.drawable.hackathon_logo)
+								.setContentTitle(info.getTitle())
+								.setContentText(info.getMessage());
+
+				Intent resultIntent = new Intent(context, StatusActivity.class);
+				builder.setContentIntent(PendingIntent.getActivity(context, 0, resultIntent,	PendingIntent.FLAG_UPDATE_CURRENT));
+
+				NotificationManager mNotifyMgr =
+						(NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+				mNotifyMgr.notify(1, builder.build());
+			}
+		});
+	}
+
+	@Override
+	public int getItemCount() {
+		return activityInfos.size();
+	}
+
+	private int getIconByActivityType(ActivityInfo info) {
 		int iconResId;
 		switch (info.getType()) {
 			case DONATION:
@@ -47,15 +85,7 @@ public class RecentActivityAdapter extends RecyclerView.Adapter<RecentActivityAd
 				iconResId = R.mipmap.ic_launcher;
 				break;
 		}
-		viewHolder.iconView.setImageResource(iconResId);
-		viewHolder.titleView.setText(info.getTitle());
-		viewHolder.messageView.setText(info.getMessage());
-		viewHolder.dateView.setText(formatTimeStamp(info.getTimestamp()));
-	}
-
-	@Override
-	public int getItemCount() {
-		return activityInfos.size();
+		return iconResId;
 	}
 
 	private String formatTimeStamp(long timestamp) {

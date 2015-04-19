@@ -5,34 +5,37 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.facebook.*;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookAuthorizationException;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.ProfilePictureView;
 import com.facebook.share.ShareApi;
 import com.facebook.share.Sharer;
-import com.facebook.share.internal.ShareInternalUtility;
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
-import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
-public class SocialActivity extends FragmentActivity {
+public class SocialActivity extends ActionBarActivity {
 
     private static final String PERMISSION = "publish_actions";
     private static final Location SEATTLE_LOCATION = new Location("") {
@@ -185,6 +188,14 @@ public class SocialActivity extends FragmentActivity {
         canPresentShareDialogWithPhotos = ShareDialog.canShow(
                 SharePhotoContent.class);
     }
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.clear();
+		getMenuInflater().inflate(R.menu.menu_social, menu);
+		super.onCreateOptionsMenu(menu);
+		return true;
+	}
 
     @Override
     protected void onResume() {
