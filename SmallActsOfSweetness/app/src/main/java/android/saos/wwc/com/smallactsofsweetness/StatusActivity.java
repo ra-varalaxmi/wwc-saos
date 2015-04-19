@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +14,11 @@ import java.util.List;
 
 public class StatusActivity extends ActionBarActivity {
 
-	RecyclerView recentActivityView;
+	private RecyclerView recentActivityView;
 	RecentActivityAdapter adapter;
+
+	TextView donationCountView;
+	TextView milestoneCountView;
 
 	private static final long HOUR_IN_MILLIS = 60 * 60 * 1000;
 	private static final long DAY_IN_MILLIS = 24 * HOUR_IN_MILLIS;
@@ -33,6 +37,14 @@ public class StatusActivity extends ActionBarActivity {
 		return activity;
 	}
 
+	private String getDummyDonationCount() {
+		return "4";
+	}
+
+	private String getDummyMilestoneCount() {
+		return "1";
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +56,12 @@ public class StatusActivity extends ActionBarActivity {
 
 		adapter = new RecentActivityAdapter(this, getDummyActivity());
 		recentActivityView.setAdapter(adapter);
+
+		donationCountView = (TextView) findViewById(R.id.donation_count);
+		donationCountView.setText(getDummyDonationCount());
+
+		milestoneCountView = (TextView) findViewById(R.id.milestone_count);
+		milestoneCountView.setText(getDummyMilestoneCount());
 	}
 
 

@@ -5,4 +5,9 @@
 
     <dimen name="home_button_height">60dp</dimen>
     <dimen name="home_button_margin">10dp</dimen>
+
+    <dimen name="recent_item_padding">10dp</dimen>
+    <dimen name="recent_item_bottom_margin">5dp</dimen>
+
+    <dimen name="status_header_icon_height">60dp</dimen>
 </resources>
